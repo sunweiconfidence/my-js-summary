@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    var feiji = function(name){
+      this.name = name;
+    }
+    feiji.prototype.send = function(msg,to){
+        console.log(this.name+'发送了消息');
+        tatai.send(msg,to);
+    };
+    feiji.prototype.jieshou = function(msg){
+        console.log(this.name+"[接受到]"+msg);
+    }
+    var tatai ={
+        all:{},
+        zhuce:function(feiji){
+            this.all[feiji.name]=feiji;
+        },
+        send:function(msg,to){
+          this.all[to.name].jieshou(msg);
+        }
+    };
+    var feiji = new feiji('feiji1');
+    var feiji2 = new feiji('feiji2');
+    tatai.zhuce(feiji1);
+    tatai.zhuce(feiji2);
+    feiji1.send('我马上降落，还有200米',feiji2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    var arr = [1, "test", "to", "3"];
+    var diedai = (function() {
+        var length = arr.length;
+        var index = 0;
+        return {
+            hasNext: function() {
+                return index < length;
+            },
+            next: function() {
+                var data = arr[index];
+                index = index + 1;
+                return data;
+            },
+            reset: function() {
+                index = 0;
+            }
+        }
+    })();
+    while (diedai.hasNext()) {
+        console.log(diedai.next());
+    }
+
+    //jquery api example
+    // $.each(arr,function(index,val){
+    // 	console.log(index);
+    // 	console.log(val);
+    // });
+    </script>
+</head>
+<!--Uncaught TypeError: diedai.hasNext is not a function-->
+<!--solve it by self execution function by (function(){}) or (function(){})() -->
+
+<body>
+</body>
+
+</html>

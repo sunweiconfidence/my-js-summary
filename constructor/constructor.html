@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    //1用于创建特定类型的对象
+    //js开发的时候写单引号
+    //js构造函数比较特殊的地方new
+    //其它的语言里，比如php里人家实现有一个关键字 A class
+    //zaomen就是构造函数，它又充当了类的概念
+    function zaomen(huawen){
+        if(!(this instanceof zaomen))
+        {
+            return new zaomen();
+        };
+        var _huawen ="普通";
+        if(huawen){
+            _huawen = huawen;
+        }
+        this.suo="普通";
+        this.huawen="绚丽";
+        this.create = function(){
+            return '[锁头]'+this.suo + '[花纹]'+this.huawen;
+        }
+    }
+
+    //var xiaozhang = zaomen();
+    var xiaozhang = new zaomen();
+    alert("xiaozhang"+xiaozhang.create());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="underscore.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="backbone.js"></script>
+    <script src="jquery.pubsub.js"></script>
+    <script src="q.js"></script>
+</head>
+<body>
+    <script>
+      //1.jQuery.Deferred
+      function f41(arr){
+          var dtd = $.Deferred();
+          window.setTimeout(function(){
+              var total = arr.reduce(function(a,b,index,arr){
+                  return a+b;
+              });
+              dtd.resolve(total);
+          },1000);
+          return dtd;
+      }
+
+      function f42(total){
+        console.log('1.jQuery.Deferred');
+        console.log(total+1);
+      }
+
+      f41([1,2,3,4,5]).then(f42);
+
+//2. Q.js
+function qtest(num){
+    return Q.delay(num,1000);
+}
+
+Q.all([qtest(10),qtest(20),qtest(30)])
+.spread(function(x,y,z){
+    return x+y+z;
+})
+.done(function(str){
+    console.log('2. Q.js');
+        console.log(str);
+})
+    </script>
+</body>
+</html>
